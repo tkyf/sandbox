@@ -33,7 +33,7 @@ def recursive_lcs(str1, str2):
 
 
 def longest_string(*strings):
-    return sorted(strings)[-1]
+    return sorted(strings, key=len)[-1]
 
 
 def main():
