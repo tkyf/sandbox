@@ -5,6 +5,11 @@ from __future__ import print_function
 import sys
 
 
+class Cell(object):
+    def __init__(self):
+        self.score = 0
+
+
 def lcs(str1, str2):
     pass
 
