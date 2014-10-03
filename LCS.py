@@ -5,21 +5,30 @@ from __future__ import print_function
 import sys
 
 
+def lcs(str1, str2):
+    table = Table(str1, str2)
+    pass
+
+
 class Cell(object):
     def __init__(self):
         self.score = 0
 
 
-def lcs(str1, str2):
-    pass
+class Table(object):
+    def __init__(self, str1, str2):
+        self.table = []
+        self.initialize()
 
+    def initialize(self, str1, str2):
+        table = []
+        return table
 
-def fill_in():
-    pass
+    def fill_in(self):
+        pass
 
-
-def trace_back():
-    pass
+    def trace_back(self):
+        pass
 
 
 def recursive_lcs(str1, str2):
