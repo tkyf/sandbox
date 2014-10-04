@@ -7,7 +7,6 @@ import sys
 
 def lcs(str1, str2):
     table = Table(str1, str2)
-    pass
 
 
 class Cell(object):
@@ -17,12 +16,13 @@ class Cell(object):
 
 class Table(object):
     def __init__(self, str1, str2):
-        self.table = []
+        self.str1 = str1
+        self.str2 = str2
         self.initialize()
 
-    def initialize(self, str1, str2):
-        table = []
-        return table
+    def initialize(self):
+        self.table = [[0 for j in range(len(self.str1))] for i in range(len(self.str2))]
+        print(self.table)
 
     def fill_in(self):
         pass
@@ -55,7 +55,8 @@ def main():
         print('Usage: $ python LCS.py string1 string2')
         return 1
 
-    print(recursive_lcs(sys.argv[1], sys.argv[2]))
+    # print(recursive_lcs(sys.argv[1], sys.argv[2]))
+    lcs(sys.argv[1], sys.argv[2])
     return 0
 
 
