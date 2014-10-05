@@ -22,7 +22,6 @@ class Table(object):
 
     def initialize(self):
         self.table = [[0 for j in range(len(self.str1))] for i in range(len(self.str2))]
-        print(self.table)
 
     def fill_in(self):
         pass
