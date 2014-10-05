@@ -7,11 +7,15 @@ import sys
 
 def lcs(str1, str2):
     table = Table(str1, str2)
+    print(table)
 
 
 class Cell(object):
     def __init__(self):
         self.score = 0
+
+    def __str__(self):
+        return self.score
 
 
 class Table(object):
@@ -19,10 +23,21 @@ class Table(object):
         self.str1 = str1
         self.str2 = str2
 
+        self.table = []
+        self.initialize()
+
+    def __str__(self):
+        return str(self.table)
+
+    def initialize(self):
         self.initialize_table()
+        self.initialize_pointers()
 
     def initialize_table(self):
-        self.table = [[0 for j in range(len(self.str1))] for i in range(len(self.str2))]
+        self.table = [[Cell() for j in range(len(self.str1))] for i in range(len(self.str2))]
+
+    def initialize_pointers(self):
+        pass
 
     def fill_in(self):
         pass
