@@ -6,7 +6,7 @@ import sys
 
 
 def lcs(str1, str2):
-    """Calclulate Longest Common subsequece of two strings.
+    """Calculate Longest Common subsequence of two strings.
 
     param: str1: one of strings.
     param: str2: the other one of strings.
