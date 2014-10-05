@@ -18,9 +18,10 @@ class Table(object):
     def __init__(self, str1, str2):
         self.str1 = str1
         self.str2 = str2
-        self.initialize()
 
-    def initialize(self):
+        self.initialize_table()
+
+    def initialize_table(self):
         self.table = [[0 for j in range(len(self.str1))] for i in range(len(self.str2))]
 
     def fill_in(self):
