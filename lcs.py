@@ -20,11 +20,30 @@ def lcs(str1, str2):
 
 
 class Cell(object):
-    def __init__(self):
+    def __init__(self, row, col):
         self.score = 0
+        self.row = row
+        self.col = col
+        self.previous_cell = None
 
     def __str__(self):
         return str(self.score)
+
+    def fill_in_cell(self, above_cell, left_cell, aboveleft_cell, str1, str2):
+        V1 = left_cell.score
+        V2 = above_cell.score
+        if str1[self.row - 1] == str2[self.col - 1]:
+            V3 = aboveleft_cell.score + 1
+        else:
+            V3 = aboveleft_cell.score
+        score = max(V1, V2, V3)
+        if score == V3:
+            self.pointer = aboveleft_cell
+        elif score == V2:
+            self.pointer = above_cell
+        else:
+            self.pointer = left_cell
+        self.score = score
 
 
 class Table(object):
@@ -34,6 +53,7 @@ class Table(object):
 
         self.table = []
         self.initialize()
+        self.fill_in()
 
     def __str__(self):
         return str([[str(cell) for cell in row] for row in self.table])
@@ -43,13 +63,22 @@ class Table(object):
         self.initialize_pointers()
 
     def initialize_table(self):
-        self.table = [[Cell() for j in range(len(self.str1))] for i in range(len(self.str2))]
+        self.table = [[Cell(i, j) for j in range(len(self.str1) + 1)] for i in range(len(self.str2) + 1)]
 
     def initialize_pointers(self):
         pass
 
     def fill_in(self):
-        pass
+        for i, row in enumerate(self.table):
+            if i == 0:
+                continue
+            for j, cell in enumerate(row):
+                if j == 0:
+                    continue
+                above     = self.table[i - 1][j]
+                left      = self.table[i][j - 1]
+                aboveleft = self.table[i - 1][j - 1]
+                cell.fill_in_cell(above, left, aboveleft, self.str1, self.str2)
 
     def trace_back(self):
         pass
@@ -81,6 +110,7 @@ def main():
 
     # print(recursive_lcs(sys.argv[1], sys.argv[2]))
     lcs(sys.argv[1], sys.argv[2])
+
     return 0
 
 
