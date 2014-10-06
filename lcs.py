@@ -11,6 +11,10 @@ def lcs(str1, str2):
     param: str1: one of strings.
     param: str2: the other one of strings.
     """
+
+    if str1 == "" or str2 == "":
+        return ""
+
     table = Table(str1, str2)
     print(table)
 
@@ -20,7 +24,7 @@ class Cell(object):
         self.score = 0
 
     def __str__(self):
-        return self.score
+        return str(self.score)
 
 
 class Table(object):
@@ -32,7 +36,7 @@ class Table(object):
         self.initialize()
 
     def __str__(self):
-        return str(self.table)
+        return str([[str(cell) for cell in row] for row in self.table])
 
     def initialize(self):
         self.initialize_table()
