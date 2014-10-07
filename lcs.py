@@ -35,13 +35,16 @@ class Cell(object):
             V3 = aboveleft_cell.score + 1
         else:
             V3 = aboveleft_cell.score
+
         score = max(V1, V2, V3)
+
         if score == V3:
             self.prev_cell = aboveleft_cell
         elif score == V2:
             self.prev_cell = above_cell
         else:
             self.prev_cell = left_cell
+
         self.score = score
 
 
@@ -59,9 +62,6 @@ class Table(object):
         return str([[str(cell) for cell in row] for row in self.table])
 
     def _initialize(self):
-        self.initialize_table()
-
-    def initialize_table(self):
         self.table = [[Cell(i, j) for j in range(len(self.str1) + 1)] for i in range(len(self.str2) + 1)]
 
     # Calcurate LCS
