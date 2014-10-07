@@ -15,6 +15,7 @@ class TestLCS(unittest.TestCase):
         self.assertEqual(lcs.lcs("", "ABDCE"), "")
         self.assertEqual(lcs.lcs("ABCDE", ""), "")
         self.assertEqual(lcs.lcs("A", "D"), "")
+        self.assertEqual(lcs.lcs("aa", "a"), "a")
 
 if __name__ == '__main__':
     unittest.main()
