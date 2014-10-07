@@ -37,11 +37,11 @@ class Cell(object):
             V3 = aboveleft_cell.score
         score = max(V1, V2, V3)
         if score == V3:
-            self.pointer = aboveleft_cell
+            self.prev_cell = aboveleft_cell
         elif score == V2:
-            self.pointer = above_cell
+            self.prev_cell = above_cell
         else:
-            self.pointer = left_cell
+            self.prev_cell = left_cell
         self.score = score
 
 
@@ -88,7 +88,7 @@ class Table(object):
         current_cell = self.table[len(self.str1)][len(self.str2)]
         while current_cell.score > 0:
             print(current_cell)
-            prev_cell = current_cell.pointer
+            prev_cell = current_cell.prev_cell
             if current_cell.score - prev_cell.score == 1 \
                and current_cell.row - prev_cell.row == 1 \
                and current_cell.col - prev_cell.col == 1:
