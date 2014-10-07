@@ -11,12 +11,11 @@ def lcs(str1, str2):
     param: str1: one of strings.
     param: str2: the other one of strings.
     """
-
     if str1 == "" or str2 == "":
         return ""
 
     table = Table(str1, str2)
-    print(table)
+    return table.get_lcs()
 
 
 class Cell(object):
@@ -24,7 +23,7 @@ class Cell(object):
         self.score = 0
         self.row = row
         self.col = col
-        self.previous_cell = None
+        self.prev_cell = None
 
     def __str__(self):
         return str(self.score)
@@ -47,28 +46,32 @@ class Cell(object):
 
 
 class Table(object):
+    """Table for calcurate by dynamic programming.
+    """
     def __init__(self, str1, str2):
         self.str1 = str1
         self.str2 = str2
 
         self.table = []
-        self.initialize()
-        self.fill_in()
+        self._initialize()
 
     def __str__(self):
         return str([[str(cell) for cell in row] for row in self.table])
 
-    def initialize(self):
+    def _initialize(self):
         self.initialize_table()
-        self.initialize_pointers()
 
     def initialize_table(self):
         self.table = [[Cell(i, j) for j in range(len(self.str1) + 1)] for i in range(len(self.str2) + 1)]
 
-    def initialize_pointers(self):
-        pass
+    # Calcurate LCS
+    def get_lcs(self):
+        if not hasattr(self, 'lcs'):
+            self._fill_in()
+            self.lcs = self._get_trace_back()
+        return self.lcs
 
-    def fill_in(self):
+    def _fill_in(self):
         for i, row in enumerate(self.table):
             if i == 0:
                 continue
@@ -80,8 +83,18 @@ class Table(object):
                 aboveleft = self.table[i - 1][j - 1]
                 cell.fill_in_cell(above, left, aboveleft, self.str1, self.str2)
 
-    def trace_back(self):
-        pass
+    def _get_trace_back(self):
+        lcs = ""
+        current_cell = self.table[len(self.str1)][len(self.str2)]
+        while current_cell.score > 0:
+            print(current_cell)
+            prev_cell = current_cell.pointer
+            if current_cell.score - prev_cell.score == 1 \
+               and current_cell.row - prev_cell.row == 1 \
+               and current_cell.col - prev_cell.col == 1:
+                lcs = self.str1[current_cell.col - 1] + lcs
+            current_cell = prev_cell
+        return lcs
 
 
 def recursive_lcs(str1, str2):
