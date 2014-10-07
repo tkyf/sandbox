@@ -87,7 +87,6 @@ class Table(object):
         lcs = ""
         current_cell = self.table[len(self.str1)][len(self.str2)]
         while current_cell.score > 0:
-            print(current_cell)
             prev_cell = current_cell.prev_cell
             if current_cell.score - prev_cell.score == 1 \
                and current_cell.row - prev_cell.row == 1 \
@@ -121,7 +120,6 @@ def main():
         print('Usage: $ python LCS.py string1 string2')
         return 1
 
-    # print(recursive_lcs(sys.argv[1], sys.argv[2]))
     lcs(sys.argv[1], sys.argv[2])
 
     return 0
