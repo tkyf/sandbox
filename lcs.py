@@ -96,6 +96,12 @@ class Table(object):
             current_cell = prev_cell
         return lcs
 
+    def print_table(self):
+        print("          " + "    ".join(self.str1))
+        print("   " + str([str(cell) for cell in self.table[0]]))
+        for i, c in enumerate(self.str2):
+            print(" {0} {1}".format(c, [str(cell) for cell in self.table[i]]))
+
 
 def recursive_lcs(str1, str2):
     if str1 == '' or str2 == '':
