@@ -12,17 +12,19 @@ class TestLCS(unittest.TestCase):
 
     def test_lcs(self):
         self.assertEqual(lcs.lcs("ABCDE", "ABDCE"), "ABDE")
-        self.assertEqual(lcs.lcs("", "ABDCE"), "")
-        self.assertEqual(lcs.lcs("ABCDE", ""), "")
+        self.assertEqual(lcs.lcs("", "A"), "")
+        self.assertEqual(lcs.lcs("A", ""), "")
         self.assertEqual(lcs.lcs("A", "D"), "")
         self.assertEqual(lcs.lcs("aa", "a"), "a")
+        self.assertEqual(lcs.lcs("a", "aa"), "a")
 
     def test_recursive_lcs(self):
         self.assertEqual(lcs.recursive_lcs("ABCDE", "ABDCE"), "ABDE")
-        self.assertEqual(lcs.recursive_lcs("", "ABDCE"), "")
-        self.assertEqual(lcs.recursive_lcs("ABCDE", ""), "")
-        self.assertEqual(lcs.recursive_lcs("A", "D"), "")
-        self.assertEqual(lcs.recursive_lcs("aa", "a"), "a")
+        self.assertEqual(lcs.lcs("", "A"), "")
+        self.assertEqual(lcs.lcs("A", ""), "")
+        self.assertEqual(lcs.lcs("A", "D"), "")
+        self.assertEqual(lcs.lcs("aa", "a"), "a")
+        self.assertEqual(lcs.lcs("a", "aa"), "a")
 
 if __name__ == '__main__':
     unittest.main()
