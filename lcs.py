@@ -31,7 +31,7 @@ class Cell(object):
     def fill_in_cell(self, above_cell, left_cell, aboveleft_cell, str1, str2):
         V1 = left_cell.score
         V2 = above_cell.score
-        if str1[self.row - 1] == str2[self.col - 1]:
+        if str1[self.col - 1] == str2[self.row - 1]:
             V3 = aboveleft_cell.score + 1
         else:
             V3 = aboveleft_cell.score
@@ -78,6 +78,7 @@ class Table(object):
             for j, cell in enumerate(row):
                 if j == 0:
                     continue
+
                 above     = self.table[i - 1][j]
                 left      = self.table[i][j - 1]
                 aboveleft = self.table[i - 1][j - 1]
@@ -85,7 +86,7 @@ class Table(object):
 
     def _get_trace_back(self):
         lcs = ""
-        current_cell = self.table[len(self.str1)][len(self.str2)]
+        current_cell = self.table[len(self.str2)][len(self.str1)]
         while current_cell.score > 0:
             prev_cell = current_cell.prev_cell
             if current_cell.score - prev_cell.score == 1 \
