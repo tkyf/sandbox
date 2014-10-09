@@ -7,26 +7,26 @@ import lcs
 
 class TestLCS(unittest.TestCase):
 
-    def setup(self):
-        pass
+    def setUp(self):
+        self.cases = [(("ABCDE", "ABDCE"), "ABDE"),
+                        (("", "A"), ""),
+                        (("A", ""), ""),
+                        (("A", "D"), ""),
+                        (("aa", "a"), "a"),
+                        (("a", "aa"), "a"),
+                        (("a", "a"), "a"),
+                        (("a", "ab"), "a"),
+                        (("ABCED", "ABDCE"), "ABCE")
+                      ]
 
     def test_lcs(self):
-        self.assertEqual(lcs.lcs("ABCDE", "ABDCE"), "ABDE")
-        self.assertEqual(lcs.lcs("", "A"), "")
-        self.assertEqual(lcs.lcs("A", ""), "")
-        self.assertEqual(lcs.lcs("A", "D"), "")
-        self.assertEqual(lcs.lcs("aa", "a"), "a")
-        self.assertEqual(lcs.lcs("a", "aa"), "a")
-        self.assertEqual(lcs.lcs("a", "a"), "a")
+        for case in self.cases:
+            self.assertEqual(lcs.lcs(case[0][0], case[0][1]), case[1])
 
     def test_recursive_lcs(self):
-        self.assertEqual(lcs.recursive_lcs("ABCDE", "ABDCE"), "ABDE")
-        self.assertEqual(lcs.lcs("", "A"), "")
-        self.assertEqual(lcs.lcs("A", ""), "")
-        self.assertEqual(lcs.lcs("A", "D"), "")
-        self.assertEqual(lcs.lcs("aa", "a"), "a")
-        self.assertEqual(lcs.lcs("a", "aa"), "a")
-        self.assertEqual(lcs.lcs("a", "a"), "a")
+        for case in self.cases:
+            self.assertEqual(lcs.recursive_lcs(case[0][0], case[0][1]), case[1])
+
 
 if __name__ == '__main__':
     unittest.main()
