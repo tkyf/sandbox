@@ -71,6 +71,13 @@ class Table(object):
             self.lcs = self._get_trace_back()
         return self.lcs
 
+    def get_lcs_length(self):
+        if not hasattr(self, 'lcs'):
+            self.get_lcs()
+
+        print(self.table[-1][-1].score)
+        return self.table[-1][-1].score
+
     def _fill_in(self):
         for i, row in enumerate(self.table):
             if i == 0:
