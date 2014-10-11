@@ -75,7 +75,6 @@ class Table(object):
         if not hasattr(self, 'lcs'):
             self.get_lcs()
 
-        print(self.table[-1][-1].score)
         return self.table[-1][-1].score
 
     def _fill_in(self):
