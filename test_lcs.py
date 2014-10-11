@@ -25,7 +25,7 @@ class TestLCS(unittest.TestCase):
 
     def test_lcs_length(self):
         for case in self.cases:
-            self.assertEqual(lcs.Table(case[0][1], case[0][1]).get_lcs_length(), len(case[1]))
+            self.assertEqual(lcs.Table(case[0][0], case[0][1]).get_lcs_length(), len(case[1]))
 
     def test_recursive_lcs(self):
         for case in self.cases:
