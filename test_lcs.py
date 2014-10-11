@@ -16,7 +16,8 @@ class TestLCS(unittest.TestCase):
                         (("a", "aa"), "a"),
                         (("a", "a"), "a"),
                         (("a", "ab"), "a"),
-                        (("ABCED", "ABDCE"), "ABCE")
+                        (("ABCED", "ABDCE"), "ABCE"),
+                        (("abcde", "abcde"), "abcde")
                       ]
 
     def test_lcs(self):
