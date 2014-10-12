@@ -18,39 +18,42 @@ def lcs(str1, str2):
     return table.get_lcs()
 
 
-class Cell(object):
-    def __init__(self, row, col):
-        self.score = 0
-        self.row = row
-        self.col = col
-        self.prev_cell = None
-
-    def __str__(self):
-        return str(self.score)
-
-    def fill_in_cell(self, above_cell, left_cell, aboveleft_cell, str1, str2):
-        V1 = left_cell.score
-        V2 = above_cell.score
-        if str1[self.col - 1] == str2[self.row - 1]:
-            V3 = aboveleft_cell.score + 1
-        else:
-            V3 = aboveleft_cell.score
-
-        score = max(V1, V2, V3)
-
-        if score == V3:
-            self.prev_cell = aboveleft_cell
-        elif score == V2:
-            self.prev_cell = above_cell
-        else:
-            self.prev_cell = left_cell
-
-        self.score = score
-
-
 class Table(object):
-    """Table for calcurate by dynamic programming.
+    """Table for calcuration LCS by dynamic programming.
     """
+
+    class Cell(object):
+        """One of cell in tabel.
+        """
+        def __init__(self, table, row, col):
+            self.table = table
+            self.row = row
+            self.col = col
+            self.score = 0
+            self.prev_cell = None
+
+        def __str__(self):
+            return str(self.score)
+
+        def fill_in_cell(self, above_cell, left_cell, aboveleft_cell):
+            V1 = left_cell.score
+            V2 = above_cell.score
+            if self.table.str1[self.col - 1] == self.table.str2[self.row - 1]:
+                V3 = aboveleft_cell.score + 1
+            else:
+                V3 = aboveleft_cell.score
+
+            score = max(V1, V2, V3)
+
+            if score == V3:
+                self.prev_cell = aboveleft_cell
+            elif score == V2:
+                self.prev_cell = above_cell
+            else:
+                self.prev_cell = left_cell
+
+            self.score = score
+
     def __init__(self, str1, str2):
         self.str1 = str1
         self.str2 = str2
@@ -62,7 +65,7 @@ class Table(object):
         return str([[str(cell) for cell in row] for row in self.table])
 
     def _initialize(self):
-        self.table = [[Cell(i, j) for j in range(len(self.str1) + 1)] for i in range(len(self.str2) + 1)]
+        self.table = [[Table.Cell(self, i, j) for j in range(len(self.str1) + 1)] for i in range(len(self.str2) + 1)]
 
     # Calcurate LCS
     def get_lcs(self):
@@ -88,7 +91,7 @@ class Table(object):
                 above     = self.table[i - 1][j]
                 left      = self.table[i][j - 1]
                 aboveleft = self.table[i - 1][j - 1]
-                cell.fill_in_cell(above, left, aboveleft, self.str1, self.str2)
+                cell.fill_in_cell(above, left, aboveleft)
 
     def _get_trace_back(self):
         lcs = ""
