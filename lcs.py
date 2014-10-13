@@ -116,11 +116,11 @@ def recursive_lcs(str1, str2):
     if str1 == '' or str2 == '':
         return ''
     else:
-        c1, str1_dash = str1[-1], str1[:-1]
-        c2, str2_dash = str2[-1], str2[:-1]
-        L1 = recursive_lcs(str1_dash, str2)
-        L2 = recursive_lcs(str1, str2_dash)
-        L3 = recursive_lcs(str1_dash, str2_dash)
+        c1, str1_rest = str1[-1], str1[:-1]
+        c2, str2_rest = str2[-1], str2[:-1]
+        L1 = recursive_lcs(str1_rest, str2)
+        L2 = recursive_lcs(str1, str2_rest)
+        L3 = recursive_lcs(str1_rest, str2_rest)
         if c1 == c2:
             return longest_string(L1, L2, L3 + c1)
         else:
