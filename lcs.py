@@ -106,9 +106,13 @@ class Table(object):
         return lcs
 
     def print_table(self):
+        if not hasattr(self, 'lcs'):
+            self.get_lcs()
         print("          " + "    ".join(self.str1))
         print("   " + str([str(cell) for cell in self.table[0]]))
         for i, c in enumerate(self.str2):
+            if i == 0:
+                continue
             print(" {0} {1}".format(c, [str(cell) for cell in self.table[i]]))
 
 
