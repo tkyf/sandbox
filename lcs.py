@@ -5,18 +5,6 @@ from __future__ import print_function
 import sys
 
 
-def align(str1, str2):
-    """Calculate global alignment of two strings with Needleman-Wunsch algorithm.
-
-    param: str1: one of strings.
-    param: str2: the other one of strings.
-    """
-    if str1 == "" or str2 == "":
-        return ""
-
-    return ""
-
-
 def lcs(str1, str2):
     """Calculate Longest Common Subsequence of two strings.
 
