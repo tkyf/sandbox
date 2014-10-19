@@ -58,6 +58,15 @@ class Table(object):
             return str(self.score)
 
         def fill_in_cell(self, above_cell, left_cell, aboveleft_cell):
+            from_left_score = left_cell.score - 2
+            from_above_score = above_cell.score - 2
+            if (self.table.str1[self.row] == self.table.str2[self.col]):
+                from_aboveleft_score = aboveleft_cell.score + 1
+            else:
+                from_aboveleft_score = aboveleft_cell.score - 1
+
+            self.score = max(from_left_score, from_above_score, from_aboveleft_score)
+
 # TODO implement
             pass
 
