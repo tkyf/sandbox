@@ -67,9 +67,6 @@ class Table(object):
 
             self.score = max(from_left_score, from_above_score, from_aboveleft_score)
 
-# TODO implement
-            pass
-
     def __init__(self, str1, str2):
         self.str1 = str1
         self.str2 = str2
@@ -98,8 +95,9 @@ class Table(object):
         return self.alignment
 
     def _fill_in(self):
-# TODO implement
-        pass
+        for row in self.score_table:
+            for cell in row:
+                cell.fill_in_cell()
 
     def _get_trace_back(self):
 # TODO implement
