@@ -95,9 +95,12 @@ class Table(object):
         return self.alignment
 
     def _fill_in(self):
-        for row in self.score_table:
-            for cell in row:
-                cell.fill_in_cell()
+        for i, row in enumerate(self.score_table):
+            for j, cell in enumerate(row):
+                above_cell = self.score_table[i - 1][j]
+                left_cell = self.score_table[i][j - 1]
+                leftabove_cell = self.score_table[i - 1][j - 1]
+                cell.fill_in_cell(above_cell, left_cell, leftabove_cell)
 
     def _get_trace_back(self):
 # TODO implement
