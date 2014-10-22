@@ -66,6 +66,12 @@ class Table(object):
                 from_aboveleft_score = aboveleft_cell.score - 1
 
             self.score = max(from_left_score, from_above_score, from_aboveleft_score)
+            if (self.score == from_left_score):
+                self.prev_cell = left_cell
+            elif (self.score == from_above_score):
+                self.prev_cell = above_cell
+            else:
+                self.prev_cell = aboveleft_cell
 
     def __init__(self, str1, str2):
         self.str1 = str1
