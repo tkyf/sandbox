@@ -105,8 +105,8 @@ class Table(object):
             for j, cell in enumerate(row):
                 above_cell = self.score_table[i - 1][j]
                 left_cell = self.score_table[i][j - 1]
-                leftabove_cell = self.score_table[i - 1][j - 1]
-                cell.fill_in_cell(above_cell, left_cell, leftabove_cell)
+                aboveleft_cell = self.score_table[i - 1][j - 1]
+                cell.fill_in_cell(above_cell, left_cell, aboveleft_cell)
 
     def _get_trace_back(self):
 # TODO implement
