@@ -60,7 +60,12 @@ class Table(object):
         def fill_in_cell(self, above_cell, left_cell, aboveleft_cell):
             from_left_score = left_cell.score - 2
             from_above_score = above_cell.score - 2
-            if (self.table.str1[self.row] == self.table.str2[self.col]):
+            print(self.table.str1)
+            print(self.col)
+            print(self.table.str2)
+            print(self.row)
+
+            if (self.table.str1[self.col - 1] == self.table.str2[self.row - 1]):
                 from_aboveleft_score = aboveleft_cell.score + 1
             else:
                 from_aboveleft_score = aboveleft_cell.score - 1
@@ -102,7 +107,11 @@ class Table(object):
 
     def _fill_in(self):
         for i, row in enumerate(self.score_table):
+            if i == 0:
+                continue
             for j, cell in enumerate(row):
+                if j == 0:
+                    continue
                 above_cell = self.score_table[i - 1][j]
                 left_cell = self.score_table[i][j - 1]
                 aboveleft_cell = self.score_table[i - 1][j - 1]
