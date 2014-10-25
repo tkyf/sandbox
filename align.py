@@ -125,7 +125,7 @@ class Table(object):
         self.calcurate()
         print("          " + "    ".join(self.str1))
         print("   " + str([str(cell) for cell in self.score_table[0]]))
-        for i, c in enumerate(self.str2):
+        for i, c in enumerate(" " + self.str2):
             if i == 0:
                 continue
             print(" {0} {1}".format(c, [str(cell) for cell in self.score_table[i]]))
