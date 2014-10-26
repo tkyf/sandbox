@@ -118,8 +118,11 @@ class Table(object):
                 cell.fill_in_cell(above_cell, left_cell, aboveleft_cell)
 
     def _get_trace_back(self):
-# TODO implement
-        pass
+        current_cell = self.score_table[len(self.str2) - 1][len(self.str1) - 1]
+        prev_cell = current_cell.prev_cell
+        while(prev_cell != None):
+# TODO implement making alignment
+            current_cell = current_cell.prev_cell
 
     def print_table(self):
         self.calcurate()
