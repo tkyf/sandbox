@@ -120,8 +120,9 @@ class Table(object):
     def _get_trace_back(self):
         current_cell = self.score_table[len(self.str2) - 1][len(self.str1) - 1]
         prev_cell = current_cell.prev_cell
+        aligned_str1 = ""
+        aligned_str2 = ""
         while(prev_cell != None):
-# TODO implement making alignment
             current_cell = current_cell.prev_cell
 
     def print_table(self):
