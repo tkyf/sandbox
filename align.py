@@ -17,7 +17,7 @@ def align(str1, str2):
     table = Table(str1, str2)
     table.print_table()
 
-    return ""
+    return table.get_alignment()
 
 
 class Table(object):
@@ -118,12 +118,25 @@ class Table(object):
                 cell.fill_in_cell(above_cell, left_cell, aboveleft_cell)
 
     def _get_trace_back(self):
-        current_cell = self.score_table[len(self.str2) - 1][len(self.str1) - 1]
-        prev_cell = current_cell.prev_cell
         aligned_str1 = ""
         aligned_str2 = ""
-        while(prev_cell != None):
+        current_cell = self.score_table[len(self.str2)][len(self.str1)]
+
+        while(current_cell.prev_cell != None):
+            prev_cell = current_cell.prev_cell
+            if (current_cell.row - prev_cell.row) == 1:
+                aligned_str2 = self.str2[current_cell.row - 1] + aligned_str2
+            else:
+                aligned_str2 = '-' + aligned_str2
+
+            if (current_cell.col - prev_cell.col) == 1:
+                aligned_str1 = self.str1[current_cell.col - 1] + aligned_str1
+            else:
+                aligned_str1 = '-' + aligned_str1
+
             current_cell = current_cell.prev_cell
+
+        return aligned_str1, aligned_str2
 
     def print_table(self):
         self.calcurate()
@@ -140,7 +153,8 @@ def main():
         print('Usage: $ python align.py string1 string2')
         return 1
 
-    align(sys.argv[1], sys.argv[2])
+    alignment = align(sys.argv[1], sys.argv[2])
+    print(alignment)
 
     return 0
 
