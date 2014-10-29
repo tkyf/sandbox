@@ -15,8 +15,6 @@ def align(str1, str2):
         return ""
 
     table = Table(str1, str2)
-    table.print_table()
-
     return table.get_alignment()
 
 
@@ -36,13 +34,9 @@ class Table(object):
 
         def initialize_score(self):
             if self.row == 0 and self.col != 0:
-                print(self.row, self.col)
                 self.score = self.table.score_table[self.row][self.col - 1].score - 2
-                print(self.score)
             elif self.row != 0 and self.col == 0:
-                print(self.row, self.col)
                 self.score = self.table.score_table[self.row - 1][self.col].score - 2
-                print(self.score)
             else:
                 self.score = 0
 
@@ -60,10 +54,6 @@ class Table(object):
         def fill_in_cell(self, above_cell, left_cell, aboveleft_cell):
             from_left_score = left_cell.score - 2
             from_above_score = above_cell.score - 2
-            print(self.table.str1)
-            print(self.col)
-            print(self.table.str2)
-            print(self.row)
 
             if (self.table.str1[self.col - 1] == self.table.str2[self.row - 1]):
                 from_aboveleft_score = aboveleft_cell.score + 1
