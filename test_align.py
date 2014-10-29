@@ -8,21 +8,14 @@ import align
 class TestAlign(unittest.TestCase):
 
     def setUp(self):
-        self.cases = [(("ABCDE", "ABDCE"), ""),
-                        (("", "A"), ""),
-                        (("A", ""), ""),
-                        (("A", "D"), ""),
-                        (("aa", "a"), ""),
-                        (("a", "aa"), ""),
-                        (("a", "a"), ""),
-                        (("a", "ab"), ""),
-                        (("ABCED", "ABDCE"), ""),
-                        (("abcde", "abcde"), "")
+        self.cases = [(("A", "A"), ("A", "A")),
+                      (("AB", "A"), ("AB", "A-")),
+                      (("ABA", "AA"), ("ABA", "A-A"))
                       ]
 
     def test_align(self):
         for case in self.cases:
-            pass
+            self.assertEqual(align.align(case[0][0], case[0][1]), case[1])
 
 if __name__ == '__main__':
     unittest.main()
