@@ -9,8 +9,11 @@ class TestAlign(unittest.TestCase):
 
     def setUp(self):
         self.cases = [(("A", "A"), ("A", "A")),
+                      (("A", "B"), ("A", "B")),
                       (("AB", "A"), ("AB", "A-")),
-                      (("ABA", "AA"), ("ABA", "A-A"))
+                      (("BA", "A"), ("BA", "-A")),
+                      (("ABA", "AA"), ("ABA", "A-A")),
+                      (("BAB", "A"), ("BAB", "-A-"))
                       ]
 
     def test_align(self):
