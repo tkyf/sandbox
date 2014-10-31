@@ -12,7 +12,7 @@ def align(str1, str2):
     param: str2: the other one of strings.
     """
     if str1 == "" or str2 == "":
-        return ""
+        return (str1, str2)
 
     table = Table(str1, str2)
     return table.get_alignment()

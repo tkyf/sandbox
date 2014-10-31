@@ -13,7 +13,10 @@ class TestAlign(unittest.TestCase):
                       (("AB", "A"), ("AB", "A-")),
                       (("BA", "A"), ("BA", "-A")),
                       (("ABA", "AA"), ("ABA", "A-A")),
-                      (("BAB", "A"), ("BAB", "-A-"))
+                      (("BAB", "A"), ("BAB", "-A-")),
+                      (("A", ""), ("A", "")),
+                      (("", "A"), ("", "A")),
+                      (("", ""), ("", ""))
                       ]
 
     def test_align(self):
