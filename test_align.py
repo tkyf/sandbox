@@ -19,9 +19,19 @@ class TestAlign(unittest.TestCase):
                       (("", ""), ("", ""))
                       ]
 
+        self.jcases = [(("あ", ""), ("あ", "")),
+                       (("", "あ"), ("", "あ")),
+                       (("あ", "あ"), ("あ", "あ"))
+                       ]
+
     def test_align(self):
         for case in self.cases:
             self.assertEqual(align.align(case[0][0], case[0][1]), case[1])
+
+    def test_align_with_japanese(self):
+        for case in self.jcases:
+            self.assertEqual(align.align(case[0][0], case[0][1]), case[1])
+
 
 if __name__ == '__main__':
     unittest.main()
