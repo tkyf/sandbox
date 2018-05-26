@@ -140,7 +140,7 @@ def main():
         print('Usage: $ python LCS.py string1 string2')
         return 1
 
-    lcs(sys.argv[1], sys.argv[2])
+    print(lcs(sys.argv[1], sys.argv[2]))
 
     return 0
 
